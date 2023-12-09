@@ -11,4 +11,5 @@ data class FirebaseRecipe(
     @SerializedName("youtubeLink") var youtubeLink: String? = null,
     @SerializedName("username") var username: String? = null,
     @SerializedName("cuisineType") var cuisineType: String? = null,
+    @SerializedName("type") var type: String? = null,
 ) : Serializable
