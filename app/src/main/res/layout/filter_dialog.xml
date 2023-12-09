@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <CheckBox
+            android:id="@+id/checkBoxCuisineTypeMexican"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mexican"/>
+
+    <CheckBox
+        android:id="@+id/checkBoxCuisineTypeItalian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Italian"/>
+    <CheckBox
+        android:id="@+id/checkBoxCuisineTypeAmerican"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="American"/>
+    <CheckBox
+        android:id="@+id/checkBoxCuisineTypeJapanese"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Japanese"/>
+    <CheckBox
+        android:id="@+id/checkBoxCuisineTypeIndian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Indian"/>
+
+    <!-- Add more checkboxes or other elements for filter criteria -->
+
+    <Button
+        android:id="@+id/btnApplyFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apply"/>
+</LinearLayout>

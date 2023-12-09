@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/navigation_wishlist"
         android:name="com.example.cookbook.ui.Wishlist.WishlistFragment"
-        android:label="Wishlist"
+        android:label="Favorites"
         tools:layout="@layout/fragment_wishlist" />
 
     <fragment
