@@ -77,9 +77,9 @@ class CategoriesFragment : Fragment(), BackPressHandler {
 
 
         val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+//        dashboardViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
         val categories = listOf(
             Category("1", "BreakFast"),
             Category("2", "Vegetarian"),

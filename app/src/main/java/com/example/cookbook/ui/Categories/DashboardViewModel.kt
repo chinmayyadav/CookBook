@@ -45,5 +45,5 @@ class DashboardViewModel : ViewModel() {
 //            }
 //    }
 
-    val text: LiveData<String> = _text
+//    val text: LiveData<String> = _text
 }
