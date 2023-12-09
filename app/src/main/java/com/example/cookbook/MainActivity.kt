@@ -11,6 +11,7 @@ import com.example.cookbook.databinding.ActivityMainBinding
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import android.content.Intent
+import android.util.Log
 
 class MainActivity : AppCompatActivity() {
 
@@ -65,5 +66,20 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    override fun onBackPressed() {
+        Log.d("MainActivity", "Back stack count: ${supportFragmentManager.backStackEntryCount}")
+//        if (supportFragmentManager.backStackEntryCount > 0) {
+//            supportFragmentManager.popBackStack()
+//        } else {
+//            super.onBackPressed()
+//        }
+        if (supportFragmentManager.findFragmentByTag("specificFragmentTag") != null) {
+            // Pop back to a particular fragment
+            supportFragmentManager.popBackStack("targetFragmentTag", 0)
+        } else {
+            super.onBackPressed()
+        }
     }
 }
