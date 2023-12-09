@@ -26,9 +26,9 @@ class RecyclerViewAdapter(val items: MutableList<FirebaseRecipe>):
 
     inner class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val recipeCard = view.findViewById<CardView>(R.id.cv)
-//        val moviePoster = view.findViewById<ImageView>(R.id.rvPoster)
-//        val movieTitle = view.findViewById<TextView>(R.id.rvTitle)
-//        val movieOverview = view.findViewById<TextView>(R.id.rvOverview)
+        val moviePoster = view.findViewById<ImageView>(R.id.rvPoster)
+        val movieTitle = view.findViewById<TextView>(R.id.rvTitle)
+        val movieOverview = view.findViewById<TextView>(R.id.rvOverview)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -42,13 +42,13 @@ class RecyclerViewAdapter(val items: MutableList<FirebaseRecipe>):
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val movie = items[position]
-//        holder.movieTitle.text = movie.name
-//
-//        holder.movieOverview.text = movie.description
-////        holder.moviePoster.setImageResource(movie.image!!)
-//        Picasso.get()
-//            .load(movie.url)
-//            .into(holder.moviePoster)
+        holder.movieTitle.text = movie.title
+
+        holder.movieOverview.text = movie.title
+//        holder.moviePoster.setImageResource(movie.image!!)
+        Picasso.get()
+            .load(movie.imageLink)
+            .into(holder.moviePoster)
 //        holder.movieCard.setOnClickListener {
 //            myListener!!.onItemClickedFromAdapter(movie)
 //        }

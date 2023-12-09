@@ -40,22 +40,20 @@ class HomeDetailFragment : Fragment() {
     }
 
     private fun loadMovieInfo() {
-        val movieTitle: TextView = requireActivity().findViewById(R.id.movieTitle)
-//        val movieID: TextView = requireActivity().findViewById(R.id.movieID)
-//        val movieRate: TextView = requireActivity().findViewById(R.id.movieRate)
-//        val movieInfo: TextView = requireActivity().findViewById(R.id.movieInfo)
-//        val movieYear: TextView = requireActivity().findViewById(R.id.movieYear)
-//        val movieImage: ImageView = requireActivity().findViewById(R.id.movieImage)
+        val recipeTitle: TextView = requireActivity().findViewById(R.id.recipeTitle)
+        val recipeIngredients: TextView = requireActivity().findViewById(R.id.recipeIngredients)
+        val recipeDirections: TextView = requireActivity().findViewById(R.id.recipeDirections)
+        val recipeImage: ImageView = requireActivity().findViewById(R.id.recipeImage)
+        val recipeYoutubeLink: TextView = requireActivity().findViewById(R.id.recipeYoutubeLink)
 
+        recipeTitle.text = recipe?.title
+        recipeIngredients.text = recipe?.ingredients?.joinToString("\n")
+        recipeDirections.text = recipe?.directions?.joinToString("\n")
+        recipeYoutubeLink.text = recipe?.youtubeLink
 
-        movieTitle.text = recipe!!.name
-//        movieID.text = recipe!!.id.toString()
-//        movieRate.text = recipe!!.stars
-//        movieInfo.text = recipe!!.description
-//        movieYear.text = recipe!!.year
-//        Picasso.get()
-//            .load(recipe!!.url)
-//            .into(movieImage)
+        Picasso.get()
+            .load(recipe?.imageLink)
+            .into(recipeImage)
 
     }
 

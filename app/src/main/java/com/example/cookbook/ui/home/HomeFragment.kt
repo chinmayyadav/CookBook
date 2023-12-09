@@ -25,6 +25,7 @@ import androidx.fragment.app.FragmentTransaction
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
+    lateinit var myAdapter: RecyclerViewAdapter
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -35,31 +36,38 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
+
 //        val homeViewModel =
 //            ViewModelProvider(this).get(HomeViewModel::class.java)
 //
 //        _binding = FragmentHomeBinding.inflate(inflater, container, false)
 //        val root: View = binding.root
 //        return root
-        val homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        val query = FirebaseDatabase.getInstance().reference.child("recipe_data").limitToFirst(50)
+        val movieList: MutableList<FirebaseRecipe> = mutableListOf()
+        val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(context)
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        query.get().addOnSuccessListener { dataSnapshot ->
+            for (item in dataSnapshot.children) {
+                val recipe = item.getValue(FirebaseRecipe::class.java)
+                recipe?.let { movieList.add(it) }
+            }
+            myAdapter = RecyclerViewAdapter(movieList)
+            recyclerView.adapter = myAdapter
+        }
 
-        val fragmentManager: FragmentManager = childFragmentManager
-        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fg,HomeDetailFragment()).addToBackStack(null).commit()
-        fragmentTransaction.commit()
 
 
-//        val manager=supportFragmentManager
-//        val transaction=manager.beginTransaction()
-//         Example button click listener to navigate to HomeDetailFragment
-//        binding.fg.setOnClickListener {
-//            // Navigate to HomeDetailFragment using the NavController
-//            findNavController().navigate(R.id.fg)
-//        }
-        return root
+
+//        recyclerView.adapter = RecyclerViewAdapter(movieList) // Replace 'YourAdapter' with your actual adapter class
+//        myAdapter = RecyclerViewAdapter(movieList)
+//        myAdapter.setMyItemClickListener(this)
+//        rv.adapter = myAdapter
+        // Add data to your adapter if needed
+
+        return view
     }
 
     override fun onDestroyView() {
