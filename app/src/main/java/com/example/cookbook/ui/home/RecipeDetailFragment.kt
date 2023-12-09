@@ -2,6 +2,7 @@ package com.example.cookbook.ui.home
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +10,13 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.cookbook.R
 import com.example.cookbook.models.FirebaseRecipe
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.squareup.picasso.Picasso
 import java.io.Serializable
 
@@ -51,6 +56,29 @@ class RecipeDetailFragment : Fragment() {
         val recipeDirections: TextView = requireActivity().findViewById(R.id.recipeDirections)
         val recipeImage: ImageView = requireActivity().findViewById(R.id.recipeImage)
         val recipeYoutubeLink: TextView = requireActivity().findViewById(R.id.recipeYoutubeLink)
+        val fab: FloatingActionButton = requireActivity().findViewById(R.id.fab)
+        fab.setOnClickListener {
+                val databaseReference = FirebaseDatabase.getInstance().getReference("favorites")
+                recipe?.username = FirebaseAuth.getInstance().currentUser?.getEmail().toString()
+                recipe?.type = "favorite"
+
+                // Create a unique key for each favorite or use a specific structure if you have one
+                val favoriteId = databaseReference.push().key
+
+                favoriteId?.let {
+                    val favoriteData = recipe
+                    databaseReference.child(it).setValue(favoriteData)
+                        .addOnSuccessListener {
+                            Toast.makeText(context, "Favourites Saved Successfully", Toast.LENGTH_SHORT).show()
+                            Log.d("RecipeAdapter", "Favorite saved successfully")
+                        }
+                        .addOnFailureListener {
+                            Toast.makeText(context, "Favourites Saved Successfully", Toast.LENGTH_SHORT).show()
+
+                            Log.d("RecipeAdapter", "Failed to save favorite", it)
+                        }
+                }
+        }
 
         recipeTitle.text = recipe?.title
         recipeIngredients.text = recipe?.ingredients?.joinToString(separator = "\n") { "- $it" }

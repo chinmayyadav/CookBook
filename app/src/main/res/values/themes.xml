@@ -13,4 +13,14 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+<!--    <style name="Theme.CookBook.Starting" parent="Theme.SplashScreen">-->
+<!--        &lt;!&ndash; Set the splash screen background to black &ndash;&gt;-->
+<!--        <item name="windowSplashScreenBackground">@android:color/black</item>-->
+<!--        &lt;!&ndash; Use windowSplashScreenAnimatedIcon to add a drawable or an animated-->
+<!--             drawable. &ndash;&gt;-->
+<!--        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_screen123</item>-->
+<!--        &lt;!&ndash; Set the theme of the Activity that follows your splash screen. &ndash;&gt;-->
+<!--        <item name="postSplashScreenTheme">@style/Theme.CookBook</item>-->
+<!--        <item name="windowSplashScreenIconBackgroundColor">@android:color/white</item>-->
+<!--    </style>-->
 </resources>

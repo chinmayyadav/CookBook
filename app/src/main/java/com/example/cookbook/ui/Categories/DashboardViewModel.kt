@@ -11,7 +11,7 @@ import com.google.firebase.ktx.Firebase
 class DashboardViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is Categories Fragment"
+        value = "Recipes from the Internet based on Categories (Live API)"
     }
 
     private val _categories = MutableLiveData<List<Category>>()
