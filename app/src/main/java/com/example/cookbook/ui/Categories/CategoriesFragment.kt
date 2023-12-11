@@ -73,9 +73,6 @@ class CategoriesFragment : Fragment(), BackPressHandler {
 
 //        recyclerViewMeals = binding.recyclerViewMeals
 //        recyclerViewMeals.layoutManager = LinearLayoutManager(context)
-
-
-
         val textView: TextView = binding.textDashboard
 //        dashboardViewModel.text.observe(viewLifecycleOwner) {
 //            textView.text = it

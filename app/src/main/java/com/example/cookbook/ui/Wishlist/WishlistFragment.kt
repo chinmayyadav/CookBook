@@ -37,13 +37,17 @@ class WishlistFragment : Fragment() {
         val movieList: MutableList<FirebaseRecipe> = mutableListOf()
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(context)
-
+        val present = mutableListOf<String>()
         query.get().addOnSuccessListener { dataSnapshot ->
             for (item in dataSnapshot.children) {
                 val recipe = item.getValue(FirebaseRecipe::class.java)
                 recipe?.let {
                     Log.d("FirebaseRecipe", "Recipe: $it")
-                    movieList.add(it)
+                    val title = it.title
+                    if (title != null && !present.contains(title)) {
+                        movieList.add(it)
+                        present.add(title)
+                    }
                 }
             }
             myAdapter = RecyclerViewAdapter(movieList, false)

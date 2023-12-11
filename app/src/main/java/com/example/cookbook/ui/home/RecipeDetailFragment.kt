@@ -61,8 +61,7 @@ class RecipeDetailFragment : Fragment() {
                 val databaseReference = FirebaseDatabase.getInstance().getReference("favorites")
                 recipe?.username = FirebaseAuth.getInstance().currentUser?.getEmail().toString()
                 recipe?.type = "favorite"
-
-                // Create a unique key for each favorite or use a specific structure if you have one
+            // Create a unique key for each favorite or use a specific structure if you have one
                 val favoriteId = databaseReference.push().key
 
                 favoriteId?.let {
@@ -79,7 +78,6 @@ class RecipeDetailFragment : Fragment() {
                         }
                 }
         }
-
         recipeTitle.text = recipe?.title
         recipeIngredients.text = recipe?.ingredients?.joinToString(separator = "\n") { "- $it" }
         recipeDirections.text = recipe?.directions?.joinToString(separator = "\n") { "* $it" }

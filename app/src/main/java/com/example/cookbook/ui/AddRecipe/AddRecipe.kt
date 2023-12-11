@@ -302,11 +302,11 @@ class AddRecipe : Fragment() {
                     imageRef.downloadUrl.addOnSuccessListener { uri ->
                         // Image URL obtained, update Firebase Database with the image link
                         databaseReference.child(recipeKey).child("imageLink").setValue(uri.toString())
+                        Toast.makeText(context, "RECIPE ADDED TO YOUR FAVOURITES", Toast.LENGTH_LONG).show()
                     }
                 }
                 .addOnFailureListener {
                     // Handle unsuccessful uploads
-
                 }
         }
     }

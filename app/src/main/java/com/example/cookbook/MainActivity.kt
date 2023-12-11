@@ -73,9 +73,6 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-//        setContentView(binding.root)
-        //FirebaseAuth.getInstance().signOut()
-
         if (auth.currentUser == null) {
             // User is not logged in, launch LoginActivity
             startActivity(Intent(this, LoginActivity::class.java))
@@ -83,22 +80,6 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-
-
-//        if (auth.currentUser != null) {
-//            // User is already logged in, launch MainActivity
-//            startActivity(Intent(this, MainActivity::class.java))
-//            finish()
-//            return
-//        }
-//
-//        else {
-//
-//            // User not logged in, launch LoginActivity
-//            startActivity(Intent(this, LoginActivity::class.java))
-//            finish()
-//
-//        }
         setContentView(binding.root)
         val navView: BottomNavigationView = binding.navView
 
